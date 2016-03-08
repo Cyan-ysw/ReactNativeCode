@@ -9,25 +9,26 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-var images = [
+var imgList = [
   'http://vczero.github.io/ctrip/hua2.png',
   'http://vczero.github.io/ctrip/nian2.png',
   'http://vczero.github.io/me/img/xiaoxue.png'
 ];
 
-var CustomImageView  = React.createClass({
+var CustomImageView = React.createClass({
   getInitialState: function(){
-    var imgs = this.props.images;
+    var imgs = this.props.imgs;
     return {
       imgs:imgs,
       count:0,
-    },
+    };
   },
+
 
   goNext: function(){
     var count = this.state.count;
     count++;
-    if (count < imgs.length) {
+    if (count < imgList.length) {
         this.setState({
             count:count
       });
@@ -36,13 +37,13 @@ var CustomImageView  = React.createClass({
 
   goPreview: function(){
     var count = this.state.count;
-    count--;
-    if (count > = 0) {
+    count --;
+    if (count >= 0) {
         this.setState({
-          count:count;
+          count:count,
         });
     }
-  }
+  },
 
   render:function(){
       return(
@@ -76,23 +77,23 @@ var App = React.createClass({
     render:function(){
         return(
           <View style={[styles.flex]}>
-            <CustomImageView images={images}></CustomImageView>
+            <CustomImageView imgs={imgList}></CustomImageView>
           </View>
         );
     },
 });
 
 
-const  styles = StyleSheet.createClass({
+const styles = StyleSheet.create({
   flex: {
      flex :1,
      alignItems:'center',
   },
   image: {
-    broderWidth:1,
+    borderWidth:1,
     width:300,
     height:200,
-    broderRadius:5,
+    borderRadius:5,
     borderColor:'#ccc',
   },
 
@@ -112,7 +113,7 @@ const  styles = StyleSheet.createClass({
     height:30,
     borderColor:'#0089ff',
     borderWidth:1,
-    jusifyContent:'center',
+    justifyContent:'center',
     alignItems:'center',
     borderRadius:3,
     marginRight:20,
@@ -120,4 +121,4 @@ const  styles = StyleSheet.createClass({
 
 });
 
-AppRegistry.registerComponent('ReactNativeCode',() => App);
+AppRegistry.registerComponent('Day01',() => App);
